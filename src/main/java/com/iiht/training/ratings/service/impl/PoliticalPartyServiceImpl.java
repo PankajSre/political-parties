@@ -70,10 +70,5 @@ public class PoliticalPartyServiceImpl implements PoliticalPartyService {
 		return politicalPartyDtos;
 	}
 
-	@Override
-	public List<PoliticalLeaderDto> getCandidatesByPartyId(Long partyId) {
-
-		return null;
-	}
 
 }

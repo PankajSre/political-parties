@@ -33,7 +33,7 @@ public class TestUtils {
 			passed = 0;
 			failed = 0;
 			
-			xmlFile = new File("./E-Loan-Boot-Postgre-Collaborative.xml");
+			xmlFile = new File("./political-parties.xml");
 			xmlFile.delete();
 			
 			businessTestFile = new File("./output_revised.txt");

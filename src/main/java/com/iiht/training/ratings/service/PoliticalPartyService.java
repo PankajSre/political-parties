@@ -17,6 +17,5 @@ public interface PoliticalPartyService {
 
 	public List<PoliticalPartyDto> getAllParties();
 
-	public List<PoliticalLeaderDto> getCandidatesByPartyId(Long partyId);
 
 }

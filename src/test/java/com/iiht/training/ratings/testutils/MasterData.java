@@ -33,7 +33,7 @@ public class MasterData {
 		return politicalPartyDtos;
 	}
 
-	public static PoliticalLeaderDto getCandidateDto() {
+	public static PoliticalLeaderDto getPoliticalLeaderDto() {
 		PoliticalLeaderDto politicalLeaderDto = new PoliticalLeaderDto();
 		politicalLeaderDto.setPoliticalLeaderId(1L);
 		politicalLeaderDto.setPoliticalPartyId(1L);
@@ -42,7 +42,7 @@ public class MasterData {
 		return politicalLeaderDto;
 	}
 
-	public static List<PoliticalLeaderDto> getcandidateDtoList() {
+	public static List<PoliticalLeaderDto> getPoliticalLeaderDtoList() {
 		List<PoliticalLeaderDto> politicalLeaderDtos = new ArrayList<>();
 		PoliticalLeaderDto politicalLeaderDto = new PoliticalLeaderDto();
 		politicalLeaderDto.setPoliticalLeaderId(1L);
