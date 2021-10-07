@@ -9,7 +9,6 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Disabled;
 //import org.junit.Test;
 //import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -27,11 +26,8 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.iiht.training.ratings.controller.PoliticalLeaderController;
-import com.iiht.training.ratings.controller.PoliticalPartyController;
 import com.iiht.training.ratings.dto.PoliticalLeaderDto;
-import com.iiht.training.ratings.dto.PoliticalPartyDto;
 import com.iiht.training.ratings.service.PoliticalLeaderService;
-import com.iiht.training.ratings.service.PoliticalPartyService;
 import com.iiht.training.ratings.testutils.MasterData;
 
 @WebMvcTest(PoliticalLeaderController.class)
@@ -254,6 +250,45 @@ public class PoliticalLeaderControllerTest {
 		});
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/leaders/1")
 				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		yakshaAssert(currentTest(), count[0] == 1 ? true : false, businessTestFile);
+
+	}
+	
+	@Test
+	public void testGetAllPoliticalLeadersByPoliticalPartyId() throws Exception {
+		List<PoliticalLeaderDto> politicalLeaderDtos = MasterData.getPoliticalLeaderDtoList();
+
+		when(this.leaderService.getPoliticalLeadersByPartyId(1L)).thenReturn(politicalLeaderDtos);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/leaders/by-party-id/1").contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		yakshaAssert(currentTest(),
+				(result.getResponse().getContentAsString().contentEquals(MasterData.asJsonString(politicalLeaderDtos))
+						? "true"
+						: "false"),
+				businessTestFile);
+
+	}
+
+	@Test
+	public void  testGetAllPoliticalLeadersByPoliticalPartyIdIsServiceMethodCalled() throws Exception {
+		final int count[] = new int[1];
+		List<PoliticalLeaderDto> politicalLeaderDtos = MasterData.getPoliticalLeaderDtoList();
+		when(this.leaderService.getPoliticalLeadersByPartyId(1L)).then(new Answer<List<PoliticalLeaderDto>>() {
+
+			@Override
+			public List<PoliticalLeaderDto> answer(InvocationOnMock invocation) throws Throwable {
+				// TODO Auto-generated method stub
+				count[0]++;
+				return politicalLeaderDtos;
+			}
+		});
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/leaders/by-party-id/1").contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();

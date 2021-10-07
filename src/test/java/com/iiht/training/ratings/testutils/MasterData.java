@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iiht.training.ratings.dto.PoliticalLeaderDto;
 import com.iiht.training.ratings.dto.DevelopmentDto;
+import com.iiht.training.ratings.dto.PoliticalLeaderDto;
 import com.iiht.training.ratings.dto.PoliticalPartyDto;
 
 public class MasterData {

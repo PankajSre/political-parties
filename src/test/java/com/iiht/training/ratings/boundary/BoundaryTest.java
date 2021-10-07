@@ -5,8 +5,6 @@ import static com.iiht.training.ratings.testutils.TestUtils.currentTest;
 import static com.iiht.training.ratings.testutils.TestUtils.testReport;
 import static com.iiht.training.ratings.testutils.TestUtils.yakshaAssert;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;

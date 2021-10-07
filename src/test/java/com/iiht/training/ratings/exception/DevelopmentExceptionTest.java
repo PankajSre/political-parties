@@ -22,17 +22,10 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.iiht.training.ratings.controller.DevelopmentController;
-import com.iiht.training.ratings.controller.PoliticalLeaderController;
-import com.iiht.training.ratings.controller.PoliticalPartyController;
 import com.iiht.training.ratings.dto.DevelopmentDto;
-import com.iiht.training.ratings.dto.PoliticalLeaderDto;
-import com.iiht.training.ratings.dto.PoliticalPartyDto;
 import com.iiht.training.ratings.exceptions.PoliticalLeaderNotFoundException;
-import com.iiht.training.ratings.exceptions.PoliticalPartyNotFoundException;
 import com.iiht.training.ratings.model.exception.ExceptionResponse;
 import com.iiht.training.ratings.service.DevelopmentService;
-import com.iiht.training.ratings.service.PoliticalLeaderService;
-import com.iiht.training.ratings.service.PoliticalPartyService;
 import com.iiht.training.ratings.testutils.MasterData;
 
 @WebMvcTest(DevelopmentController.class)
